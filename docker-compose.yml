@@ -5,14 +5,9 @@ x-backend:
   build:
     context: .
     dockerfile: Dockerfile.dev
+  env_file: .env
   environment:
     RAILS_ENV: development
-    DB_USERNAME: postgres
-    DB_PASSWORD: secret
-    DB_HOST: db
-    DB_PORT: 5432
-    DB_NAME: es_db
-    SECRET_KEY_BASE: STUB
     REDIS_URL: redis://redis:6379/1
   restart: on-failure:3
   stdin_open: true
@@ -25,15 +20,16 @@ services:
   backend:
     <<: *backend
     ports:
-      - 3001:3000/tcp
+      - 3000:3000/tcp
     depends_on:
       - db
 
   db:
     image: postgres:11.2
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: secret
+    env_file: .env
+  #  environment:
+  #    POSTGRES_USER: postgres
+  #    POSTGRES_PASSWORD: secret
     restart: always
     volumes:
       - postgres:/var/lib/postgresql/data
