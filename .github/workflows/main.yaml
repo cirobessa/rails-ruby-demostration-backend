@@ -40,7 +40,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          aws eks update-kubeconfig --region us-east-1 --name `aws eks list-clusters | grep  ${{ secrets.DOCKER_USER }} | sed s/\"//g `
+          aws eks update-kubeconfig --region us-east-1 --name  ${{ secrets.EKS_CLUSTER }} 
           cd k8s-manifests
           kubectl create -f backend-deployment.yaml,backend-service.yaml,db-deployment.yaml,db-service.yaml,env-configmap.yaml,postgres-persistentvolumeclaim.yaml,redis-deployment.yaml,redis-service.yaml,secret.yaml,sidekiq-deployment.yaml
 
