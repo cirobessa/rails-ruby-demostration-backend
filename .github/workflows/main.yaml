@@ -42,5 +42,5 @@ jobs:
         run: |
           aws eks update-kubeconfig --region us-east-1 --name  ${{ secrets.EKS_CLUSTER }} 2>&1 || true
           cd k8s-manifests
-          kubectl create -f backend-deployment.yaml,backend-service.yaml,db-deployment.yaml,db-service.yaml,env-configmap.yaml,postgres-persistentvolumeclaim.yaml,redis-deployment.yaml,redis-service.yaml,secret.yaml,sidekiq-deployment.yaml
+          kubectl apply -f backend-deployment.yaml,backend-service.yaml,db-deployment.yaml,db-service.yaml,env-configmap.yaml,postgres-persistentvolumeclaim.yaml,redis-deployment.yaml,redis-service.yaml,secret.yaml,sidekiq-deployment.yaml
 
