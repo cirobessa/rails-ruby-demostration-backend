@@ -6,6 +6,7 @@ metadata:
     io.kompose.service: postgres
   name: postgres
 spec:
+  storageClassName: gp2
   accessModes:
     - ReadWriteOnce
   resources:
