@@ -1,0 +1,24 @@
+apiVersion: v1
+data:
+  DATABASE_HOST: db
+  DATABASE_NAME: rails_development
+  DATABASE_PASSWORD: secret
+  DATABASE_USER: postgres
+  DB_HOST: db
+  DB_NAME: es_db
+  DB_PASSWORD: secret
+  DB_PORT: "5432"
+  DB_USERNAME: postgres
+  POSTGRES_PASSWORD: secret
+  POSTGRES_USER: postgres
+  RAILS_ENV: development
+  REDIS_HOST: redis
+  REDIS_PORT: "6379"
+  REDIS_URL: redis://redis:6379/1
+  SECRET_KEY_BASE: STUB
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: backend-env
+  name: env
